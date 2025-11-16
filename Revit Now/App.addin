@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RevitAddIns>
+
+	<AddIn Type="Application">
+
+		<Name>Link Selection</Name>
+
+		<FullClassName></FullClassName>
+
+		<Text></Text>
+
+		<Description></Description>
+
+		<VisibilityMode>AlwaysVisible</VisibilityMode>
+
+		<Assembly></Assembly>
+
+		<AddInId>
+			5F8732BF-E1F1-4810-8F17-7D13E1B04A51
+		</AddInId>
+
+		<VendorId>EsraaSalah</VendorId>
+
+		<VendorDescription>Esraa Salah, BIM Engineer, Revit Developer</VendorDescription>
+
+	</AddIn>
+
+</RevitAddIns>
