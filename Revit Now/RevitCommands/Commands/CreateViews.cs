@@ -7,7 +7,6 @@ using System.Reflection;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI.Selection;
-using Autodesk.Revit.DB;
 using Autodesk.Revit.Attributes;
 using System.Linq.Expressions;
 
@@ -29,9 +28,14 @@ namespace Revit_Now.RevitCommands.Commands
             FilteredElementCollector collector = new FilteredElementCollector(doc);
             IList <Element> levelList = collector.WhereElementIsNotElementType().OfClass(typeof(Level)).ToElements();
             StringBuilder sb = new StringBuilder();
-
-            ViewFamilyType viewType = collector.OfClass(typeof(ViewFamilyType))
+            
+            ViewFamilyType viewType = new FilteredElementCollector(doc)
+            .OfClass(typeof(ViewFamilyType))
             .Cast<ViewFamilyType>().FirstOrDefault(x => x.ViewFamily == ViewFamily.FloorPlan);
+
+            //.Cast<ViewFamilyType>().FirstOrDefault(x => x.ViewFamily == ViewFamily.FloorPlan && x.Name == "f");
+
+            //sb.Append(viewType.Name.ToString()); 
 
 
             foreach (Element el in levelList)
@@ -44,7 +48,7 @@ namespace Revit_Now.RevitCommands.Commands
                 {
                     t.Start();
                     ViewPlan viewPlan = ViewPlan.Create(doc, viewType.Id, level.Id);
-                    viewPlan.Name = "Floor Plan - " + level.Name;
+                    viewPlan.Name = "For Architecture - " + level.Name;
                     t.Commit();
                 }
                 
