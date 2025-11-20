@@ -73,6 +73,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RevitCommands\Commands\ControlHiddenLinks.cs" />
     <Compile Include="RevitCommands\Commands\CreateViewsFromLinks.cs" />
     <Compile Include="RevitCommands\Commands\CreateViews.cs" />
     <Compile Include="Views\Window1.xaml.cs">

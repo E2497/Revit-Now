@@ -41,6 +41,7 @@ namespace Revit_Now.RevitCommands.Commands
             ElementId viewFamilyTypeId = viewFamilyType.Id;
 
             StringBuilder sb = new StringBuilder();
+            RevitLinkGraphicsSettings settings = new RevitLinkGraphicsSettings();
             foreach (Element link in LinksList) {
 
                 using (Transaction t = new Transaction(doc, "Create View"))
@@ -48,8 +49,10 @@ namespace Revit_Now.RevitCommands.Commands
                     t.Start();
                     // Now use it to create the 3D view
                     View3D view3d = View3D.CreateIsometric(doc, viewFamilyTypeId);
-                   
+                    view3d.HideElements(new List<ElementId> { link.Id });
                     view3d.Name = ModifyString.RemoveStringAfterIndex(link.Name.ToString(), ':');
+                   
+
                     t.Commit();
                     sb.Append(link.Name.ToString());
                     sb.Append(Environment.NewLine);
